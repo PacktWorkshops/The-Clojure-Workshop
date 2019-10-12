@@ -1,0 +1,3 @@
+{:deps
+ {org.clojure/data.csv {:mvn/version "0.1.4"}
+  semantic-csv {:mvn/version "0.2.1-alpha1"}}}
