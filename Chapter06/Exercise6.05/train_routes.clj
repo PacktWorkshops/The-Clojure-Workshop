@@ -1,3 +1,5 @@
+(ns packt-clj.train-routes)
+
 (def routes
   [[:paris :london 236]
    [:paris :frankfurt 121]
@@ -27,3 +29,14 @@
    [:berlin :warsaw 52]
    [:vienna :budapest 43]
    [:prague :budapest 91]])
+
+(def lookup (grouped-routes routes))
+
+(defn grouped-routes
+  [routes]
+  (->> routes
+       (mapcat (fn [[origin-city dest-city cost :as r]]
+                 [r [dest-city origin-city cost]]))
+       (group-by first)
+       (map (fn [[k v]] [k (route-list->distance-map v)]))
+       (into {})))

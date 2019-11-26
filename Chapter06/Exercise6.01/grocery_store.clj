@@ -23,3 +23,5 @@
                         :weight 400
                         :max-dimension 280}])
 
+(defn article-stream [n] 
+ (repeatedly n #(rand-nth grocery-articles)))
