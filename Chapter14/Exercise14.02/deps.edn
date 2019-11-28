@@ -1,0 +1,4 @@
+{:deps {compojure {:mvn/version "1.6.1"}
+        ring/ring-core {:mvn/version "1.7.1"}
+        ring/ring-jetty-adapter {:mvn/version "1.7.1"}}
+
