@@ -1,0 +1,5 @@
+{:deps
+ {hikari-cp {:mvn/version "2.8.0"}
+  org.apache.derby/derby {:mvn/version "10.14.2.0"}
+  org.clojure/java.jdbc {:mvn/version "0.7.9"}}}
+

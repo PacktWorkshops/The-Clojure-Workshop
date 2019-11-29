@@ -1,0 +1,4 @@
+{:deps
+ {org.apache.derby/derby {:mvn/version "10.14.2.0"}
+  org.clojure/java.jdbc {:mvn/version "0.7.9"}}}
+
