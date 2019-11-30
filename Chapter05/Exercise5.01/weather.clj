@@ -19,3 +19,22 @@
     :min 19
     :description :sunny
     :date "2019-09-28"}])
+
+
+;;; In REPL
+(apply max (map :max weather-days))
+
+;;; In REPL
+(reduce (fn [max-day-so-far this-day]
+          (if (> (:max this-day) (:max max-day-so-far))
+            this-day
+            max-day-so-far))
+        weather-days)
+
+;;; In REPL
+(reduce (fn [min-max-day-so-far this-day]
+                (if (< (:max this-day) (:max min-max-day-so-far))
+                  this-day
+                  min-max-day-so-far))
+              weather-days)
+
