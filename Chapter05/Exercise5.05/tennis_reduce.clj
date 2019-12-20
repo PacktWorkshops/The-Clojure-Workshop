@@ -5,14 +5,18 @@
    [semantic-csv.core :as sc]))
 
 
-(defn win-loss-by-player [csv]
+(defn tennis-csv->tournament-groups [csv]
   (with-open [r (io/reader csv)]
     (->> (csv/read-csv r)
          sc/mappify
-         (reduce (fn [acc {:keys [winner_slug loser_slug]}]
-                   (-> acc
-                       (update-in [winner_slug :wins]
-                                  (fn [wins] (inc (or wins 0))))
-                       (update-in [loser_slug :losses]
-                                  (fn [losses] (inc (or losses 0))))))
-                 {}))))
+         (map #(select-keys % [:tourney_slug :winner_name :loser_name]))
+         (group-by :tourney_slug))))
+
+
+(defn tennis-csv->tournament-match-counts [csv]
+  (with-open [r (io/reader csv)]
+    (->> (csv/read-csv r)
+         sc/mappify
+         (group-by :tourney_slug)
+         (map (fn [[k ms]] [k (count ms)]))
+         (into {}))))

@@ -29,3 +29,8 @@
     :tournament "Toray Pan Pacific Open",
     :location "Tokyo",
     :date "2016-09-21"}])
+
+
+;;; In REPL
+(def matches-by-date (zipmap (map :date matches) matches))
+(get matches-by-date "2016-09-20")

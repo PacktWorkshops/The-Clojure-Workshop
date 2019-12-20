@@ -10,8 +10,6 @@
    (reduce (fn [{:keys [current-wins current-losses] :as acc} {:keys [winner-name] :as match}]
              (let [this-match (assoc match :current-streak (streak-string current-wins current-losses))
                    serena-victory? (= winner-name "Williams S.")]
-               (println serena-victory?)
-               (println winner-name)
                (-> acc
                    (update :matches #(conj % this-match))
                    (assoc :current-wins (if serena-victory?
