@@ -1,0 +1,23 @@
+/* some style */
+
+.card {
+    display: inline-block;
+    border: 1px solid red;
+    height: 50px;
+    width: 50px;
+}
+
+.tile {
+    border: 1px solid green;
+    display: inline-block;
+    height: 100px;
+    width: 200px;
+}
+
+.hovered-tile {
+    background-color: cornflowerblue;
+}
+
+.card.ui-draggable-disabled {
+    background-color: yellow;
+}
