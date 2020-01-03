@@ -6,7 +6,7 @@
 
 (in-ns 'shops)
 
-(clojure.core/refer '[garden :rename {vegetables owoce}])
+(clojure.core/refer 'garden :rename '{fruits owoce})
 
 vegetables
 
