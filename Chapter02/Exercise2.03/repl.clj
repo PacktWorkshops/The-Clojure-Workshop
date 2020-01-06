@@ -1,20 +1,24 @@
 ;; 1
-(get [:a :b :c] 0)
-(get [:a :b :c] 2)
-(get [:a :b :c] 10)
+(def supported-currencies #{"Dollar" "Japanese yen" "Euro" "Inidan rupee" "British pound"})
 
 ;; 2
-(def fibonacci [0 1 1 2 3 5 8])
-(get fibonacci 6)
+(get supported-currencies "Dollar")
+(get supported-currencies "Swiss franc")
 
 ;; 3
-(fibonacci 6)
+(contains? supported-currencies "Dollar")
+(contains? supported-currencies "Swiss franc")
 
 ;; 4
-(conj fibonacci 13 21)
+(supported-currencies "Swiss franc")
+("Dollar" supported-currencies)
+
 
 ;; 5
-(let [size (count fibonacci)
-       last-number (last fibonacci)
-       second-to-last-number (fibonacci (- size 2))]
-    (conj fibonacci (+ last-number second-to-last-number)))
+(conj supported-currencies "Monopoly Money")
+
+;; 6
+(conj supported-currencies "Monopoly Money" "Gold dragon" "Gil")
+
+;; 7
+(disj supported-currencies "Dollar" "British pound")
