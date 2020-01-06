@@ -10,7 +10,7 @@
         (update target :health - points)))))
 
 ;; 3
-(def enemy {:name "Zulkaz", :health 250, :armor 0.2, :camp :trolls})
+(def enemy {:name "Zulkaz", :health 250, :armor 0.8, :camp :trolls})
 (strike enemy :sword)
 
 

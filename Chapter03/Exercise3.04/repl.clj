@@ -40,13 +40,13 @@
 ((weapon-fn-map :cast-iron-saucepan) 200)
 
 ;; 9
-user=> (source identity)
-(defn identity
-  "Returns its argument."
-  {:added "1.0"
-   :static true}
-  [x] x)
-nil
+; (source identity)
+; (defn identity
+;   "Returns its argument."
+;   {:added "1.0"
+;    :static true}
+;   [x] x)
+; nil
 
 ;; 10
 (def weapon-fn-map
@@ -68,14 +68,14 @@ nil
 
 ;; 12
 (def enemy {:name "Arnold", :health 250})
-(strike target :sweet-potato)
-(strike target :sword)
-(strike target :cast-iron-saucepan)
-(strike (strike target :sword) :cast-iron-saucepan)
+(strike enemy :sweet-potato)
+(strike enemy :sword)
+(strike enemy :cast-iron-saucepan)
+(strike (strike enemy :sword) :cast-iron-saucepan)
 
 
 ;; 13
-(update target :health (comp (:sword weapon-fn-map) (:cast-iron-saucepan weapon-fn-map)))
+(update enemy :health (comp (:sword weapon-fn-map) (:cast-iron-saucepan weapon-fn-map)))
 
 ;; 14
 (defn mighty-strike
