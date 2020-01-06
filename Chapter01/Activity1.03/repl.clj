@@ -17,7 +17,7 @@
 (meditate "what we do now echoes in eternity" 50)
 
 ;; 9
-(doc cond)
+; (doc cond)
 
 (defn meditate
   "Return a transformed version of the string `s` based on the `calmness-level`"
