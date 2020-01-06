@@ -1,43 +1,85 @@
 ;; 1
-(def player {:name "Lea" :health 200 :position {:x 10 :y 10 :facing :north}})
+(def weapon-fn-map
+  {:fists (fn [health] (if (< health 100) (- health 10) health))})
 
 ;; 2
-(defmulti move #(:facing (:position %)))
+((weapon-fn-map :fists) 50)
+((weapon-fn-map :fists) 150)
 
 ;; 3
-(ns-unmap 'user 'move)
-(defmulti move (comp :facing :position))
+(def weapon-fn-map
+  {
+    :fists (fn [health] (if (< health 100) (- health 10) health))
+    :staff (partial + 35)
+  })
 
 ;; 4
-(defmethod move :north
-	[entity]
-  (update-in entity [:position :y] inc))
+((weapon-fn-map :staff) 150)
 
-;; 5
-(move player)
+;; 5 
+(def weapon-fn-map
+  {
+    :fists (fn [health] (if (< health 100) (- health 10) health))
+    :staff (partial + 35)
+    :sword #(- % 100)
+  })
 
 ;; 6
-(defmethod move :south
-	[entity]
-  (update-in entity [:position :y] dec))
-
-(defmethod move :west
-	[entity]
-  (update-in entity [:position :x] inc))
-
-(defmethod move :east
-	[entity]
-  (update-in entity [:position :x] dec))
-
+((weapon-fn-map :sword) 150)
 
 ;; 7
-(move {:position {:x 10 :y 10 :facing :west}})
-(move {:position {:x 10 :y 10 :facing :south}})
-(move {:position {:x 10 :y 10 :facing :east}})
+(def weapon-fn-map
+  {
+    :fists (fn [health] (if (< health 100) (- health 10) health))
+    :staff (partial + 35)
+    :sword #(- % 100)
+    :cast-iron-saucepan #(- % 100 (rand-int 50))
+  })
 
+;; 8
+((weapon-fn-map :cast-iron-saucepan) 200)
 
 ;; 9
-(defmethod move :default [entity] entity)
+user=> (source identity)
+(defn identity
+  "Returns its argument."
+  {:added "1.0"
+   :static true}
+  [x] x)
+nil
+
+;; 10
+(def weapon-fn-map
+  {
+    :fists (fn [health] (if (< health 100) (- health 10) health))
+    :staff (partial + 35)
+    :sword #(- % 100)
+    :cast-iron-saucepan #(- % 100 (rand-int 50))
+    :sweet-potato identity
+  })
+
+;; 11
+(defn strike
+  "With one argument, strike a target with a default :fists `weapon`. With two argument, strike a target with `weapon` and return the target entity"
+  ([target] (strike target :fists))
+  ([target weapon]
+    (let [weapon-fn (weapon weapon-fn-map)]
+      (update target :health weapon-fn))))
+
+;; 12
+(def enemy {:name "Arnold", :health 250})
+(strike target :sweet-potato)
+(strike target :sword)
+(strike target :cast-iron-saucepan)
+(strike (strike target :sword) :cast-iron-saucepan)
 
 
-(move {:position {:x 10 :y 10 :facing :wall}})
+;; 13
+(update target :health (comp (:sword weapon-fn-map) (:cast-iron-saucepan weapon-fn-map)))
+
+;; 14
+(defn mighty-strike
+  "Strike a `target` with all weapons!"
+  [target]
+  (let [weapon-fn (apply comp (vals weapon-fn-map))]
+      (update target :health weapon-fn)))

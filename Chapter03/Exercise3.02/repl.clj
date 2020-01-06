@@ -1,56 +1,47 @@
 ;; 1
-(def weapon-damage {:fists 10.0 :staff 35.0 :sword 100.0 :cast-iron-saucepan 150.0})
+(def booking
+  {
+    :id 8773
+    :customer-name "Alice Smith"
+    :catering-notes "Vegetarian on Sundays"
+    :flights [
+      {
+        :from {:lat 48.9615 :lon 2.4372 :name "Paris Le Bourget Airport"},
+        :to {:lat 37.742 :lon -25.6976 :name "Ponta Delgada Airport"}},
+      {
+        :from {:lat 37.742 :lon -25.6976 :name "Ponta Delgada Airport"},
+        :to {:lat 48.9615 :lon 2.4372 :name "Paris Le Bourget Airport"}}
+    ]
+  })
 
 ;; 2
-(defn strike
-  ([target weapon]
-    (let [points (weapon weapon-damage)]
-      (if (= :gnomes (:camp target))
-        (update target :health + points)
-        (update target :health - points)))))
+(let [{:keys [customer-name flights]} booking] (println (str customer-name " booked " (count flights) " flights.")))
 
 ;; 3
-(def enemy {:name "Zulkaz", :health 250, :armor 0.2, :camp :trolls})
-(strike enemy :sword)
+(defn print-mapjet-flight [flight]
+  (let [{{lat1 :lat lon1 :lon} :from,
+         {lat2 :lat lon2 :lon} :to} flight]
+    (println (str "Flying from: Lat " lat1 " Lon " lon1 " Flying to: Lat " lat2 " Lon " lon2))))
 
+(defn print-mapjet-flight [flight]
+  (let [{:keys [from to]} flight
+        {lat1 :lat lon1 :lon} from
+        {lat2 :lat lon2 :lon} to]
+    (println (str "Flying from: Lat " lat1 " Lon " lon1 " Flying to: Lat " lat2 " Lon " lon2))))
 
 ;; 4
-(def ally {:name "Carla", :health 80, :camp :gnomes})
-(strike ally :staff)
+(defn print-mapjet-flight [flight]
+  (let [{{lat1 :lat lon1 :lon} :from,
+         {lat2 :lat lon2 :lon} :to} flight]
+    (println (str "Flying from: Lat " lat1 " Lon " lon1 " Flying to: Lat " lat2 "Lon " lon2))))
 
+(print-mapjet-flight (first (:flights mapjet-booking)))
 
 ;; 5
-(defn strike
-  ([target weapon]
-    (let [points (weapon weapon-damage)]
-      (if (= :gnomes (:camp target))
-        (update target :health + points)
-        (let [armor (or (:armor target) 0)
-              damage (* points (- 1 armor))]
-          (update target :health - damage))))))
-
-
-;; 8
-(defn strike
-  ([{:keys [camp armor] :as target} weapon]
-    (let [points (weapon weapon-damage)]
-      (if (= :gnomes camp)
-        (update target :health + points)
-        (let [armor-effect (or (:armor target) 0)
-              damage (* points (- 1 armor-effect))]
-          (update target :health - damage))))))
-
-
-
-;; 9
-(defn strike
-  "With one argument, strike a target with a default :fists `weapon`. With two argument, strike a target with `weapon`.
-   Strike will heal a target that belongs to the gnomes camp."
-  ([target] (strike target :fists))
-  ([{:keys [camp armor], :or {armor 0}, :as target} weapon]
-    (let [points (weapon weapon-damage)]
-      (if (= :gnomes camp)
-        (update target :health + points)
-        (let [damage (* points (- 1 armor))]
-          (update target :health - damage))))))
-
+(defn print-mapjet-booking [booking]
+  (let [{:keys [customer-name flights]} booking]
+    (println (str customer-name " booked " (count flights) " flights."))
+    (let [[flight1 flight2 flight3] flights]
+      (when flight1 (print-mapjet-flight flight1))
+      (when flight2 (print-mapjet-flight flight2))
+      (when flight3 (print-mapjet-flight flight3)))))
