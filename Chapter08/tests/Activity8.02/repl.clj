@@ -7,3 +7,5 @@
          (are [actual expected] (= expected actual)
               3 (parse-function ["1" "2"])
               5 (parse-function ["1" "2" "2"])))
+
+(run-tests)

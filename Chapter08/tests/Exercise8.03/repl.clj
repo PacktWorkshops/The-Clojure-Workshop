@@ -2,8 +2,6 @@
 
 (def fruits ["orange" "apple" "melon"])
 
-(clojure.core/refer 'new-namespace)
-
 (clojure.core/refer 'clojure.test :only '(deftest is run-tests))
 
 (deftest fruits-test
