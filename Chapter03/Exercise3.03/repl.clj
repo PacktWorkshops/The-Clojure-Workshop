@@ -1,85 +1,56 @@
 ;; 1
-(def weapon-fn-map
-  {:fists (fn [health] (if (< health 100) (- health 10) health))})
+(def weapon-damage {:fists 10.0 :staff 35.0 :sword 100.0 :cast-iron-saucepan 150.0})
 
 ;; 2
-((weapon-fn-map :fists) 50)
-((weapon-fn-map :fists) 150)
+(defn strike
+  ([target weapon]
+    (let [points (weapon weapon-damage)]
+      (if (= :gnomes (:camp target))
+        (update target :health + points)
+        (update target :health - points)))))
 
 ;; 3
-(def weapon-fn-map
-  {
-    :fists (fn [health] (if (< health 100) (- health 10) health))
-    :staff (partial + 35)
-  })
+(def enemy {:name "Zulkaz", :health 250, :armor 0.8, :camp :trolls})
+(strike enemy :sword)
+
 
 ;; 4
-((weapon-fn-map :staff) 150)
+(def ally {:name "Carla", :health 80, :camp :gnomes})
+(strike ally :staff)
 
-;; 5 
-(def weapon-fn-map
-  {
-    :fists (fn [health] (if (< health 100) (- health 10) health))
-    :staff (partial + 35)
-    :sword #(- % 100)
-  })
 
-;; 6
-((weapon-fn-map :sword) 150)
+;; 5
+(defn strike
+  ([target weapon]
+    (let [points (weapon weapon-damage)]
+      (if (= :gnomes (:camp target))
+        (update target :health + points)
+        (let [armor (or (:armor target) 0)
+              damage (* points (- 1 armor))]
+          (update target :health - damage))))))
 
-;; 7
-(def weapon-fn-map
-  {
-    :fists (fn [health] (if (< health 100) (- health 10) health))
-    :staff (partial + 35)
-    :sword #(- % 100)
-    :cast-iron-saucepan #(- % 100 (rand-int 50))
-  })
 
 ;; 8
-((weapon-fn-map :cast-iron-saucepan) 200)
+(defn strike
+  ([{:keys [camp armor] :as target} weapon]
+    (let [points (weapon weapon-damage)]
+      (if (= :gnomes camp)
+        (update target :health + points)
+        (let [armor-effect (or (:armor target) 0)
+              damage (* points (- 1 armor-effect))]
+          (update target :health - damage))))))
+
+
 
 ;; 9
-user=> (source identity)
-(defn identity
-  "Returns its argument."
-  {:added "1.0"
-   :static true}
-  [x] x)
-nil
-
-;; 10
-(def weapon-fn-map
-  {
-    :fists (fn [health] (if (< health 100) (- health 10) health))
-    :staff (partial + 35)
-    :sword #(- % 100)
-    :cast-iron-saucepan #(- % 100 (rand-int 50))
-    :sweet-potato identity
-  })
-
-;; 11
 (defn strike
-  "With one argument, strike a target with a default :fists `weapon`. With two argument, strike a target with `weapon` and return the target entity"
+  "With one argument, strike a target with a default :fists `weapon`. With two argument, strike a target with `weapon`.
+   Strike will heal a target that belongs to the gnomes camp."
   ([target] (strike target :fists))
-  ([target weapon]
-    (let [weapon-fn (weapon weapon-fn-map)]
-      (update target :health weapon-fn))))
+  ([{:keys [camp armor], :or {armor 0}, :as target} weapon]
+    (let [points (weapon weapon-damage)]
+      (if (= :gnomes camp)
+        (update target :health + points)
+        (let [damage (* points (- 1 armor))]
+          (update target :health - damage))))))
 
-;; 12
-(def enemy {:name "Arnold", :health 250})
-(strike target :sweet-potato)
-(strike target :sword)
-(strike target :cast-iron-saucepan)
-(strike (strike target :sword) :cast-iron-saucepan)
-
-
-;; 13
-(update target :health (comp (:sword weapon-fn-map) (:cast-iron-saucepan weapon-fn-map)))
-
-;; 14
-(defn mighty-strike
-  "Strike a `target` with all weapons!"
-  [target]
-  (let [weapon-fn (apply comp (vals weapon-fn-map))]
-      (update target :health weapon-fn)))

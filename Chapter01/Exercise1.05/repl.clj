@@ -12,8 +12,8 @@
 
 ;; 5
 (square 2)
-(square *1)
-(square *1)
+; (square *1)
+; (square *1)
 
 ;; 6
 (defn square [x] (* x x))

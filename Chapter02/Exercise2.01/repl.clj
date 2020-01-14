@@ -1,46 +1,61 @@
 ;; 1
-(def favorite-fruit {:name "Kiwi", :color "Green", :kcal_per_100g 61 :distinguish_mark "Hairy"})
+; (doc clojure.string/replace)
 
 ;; 2
-(get favorite-fruit :name)
-(get favorite-fruit :color)
+(clojure.string/replace "Hello World" #"\w" "!")
 
 ;; 3
-(get favorite-fruit :taste)
-(get favorite-fruit :taste "Very good 8/10")
-(get favorite-fruit :kcal_per_100g 0)
+(clojure.string/replace "Hello World" #"\w" (fn [letter] (do (println letter) "!")))
 
 ;; 4
-(favorite-fruit :color)
+(int \a)
 
-;; 5
-(:color favorite-fruit)
+;; 5 
+(first (char-array "a"))
 
 ;; 6
-(:shape favorite-fruit "egg-like")
+(Math/pow (int (first (char-array "a"))) 2)
 
 ;; 7
-(assoc favorite-fruit :shape "egg-like")
+(defn encode-letter [s]
+  (let [code (Math/pow (int (first (char-array s))) 2)]
+    (str (int code))))
+
+(encode-letter "a")
 
 ;; 8
-favorite-fruit
+(defn encode [s]
+  (clojure.string/replace s #"\w" encode-letter))
 
-;; 9
-(assoc favorite-fruit :color "Brown")
+(encode "Hello World")
 
-;; 10
-(assoc favorite-fruit :yearly_production_in_tonnes {:china 2025000 :italy 541000 :new_zealand 412000 :iran 311000 :chile 225000})
+;; 9 
+(defn encode-letter [s x]
+  (let [code (Math/pow (+ x (int (first (char-array s)))) 2)]
+    (str "#" (int code))))
+
+;; 10 
+; (encode "Hello World")
 
 ;; 11
-(assoc favorite-fruit :kcal_per_100g (- (:kcal_per_100g favorite-fruit) 1))
-
+(defn encode [s]
+  (let [number-of-words (count (clojure.string/split s #" "))]
+    (clojure.string/replace s #"\w" (fn [s] (encode-letter s number-of-words)))))
 ;; 12
-(update favorite-fruit :kcal_per_100g dec)
+(encode "Super secret")
+(encode "Super secret message")
 
 ;; 13
-(update favorite-fruit :kcal_per_100g - 10)
+(defn decode-letter [x y]
+  (let [number (Integer/parseInt (subs x 1))
+        letter (char (- (Math/sqrt number) y))]
+    (str letter)))
 
 ;; 14
-(dissoc favorite-fruit :distinguish_mark)
-(dissoc favorite-fruit :kcal_per_100g :color)
+(defn decode [s]
+  (let [number-of-words (count (clojure.string/split s #" "))]
+    (clojure.string/replace s #"\#\d+" (fn [s] (decode-letter s number-of-words)))))
 
+ ;; 15
+ (encode "If you want to keep a secret, you must also hide it from yourself.")
+ ; (decode *1)
