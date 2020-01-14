@@ -31,3 +31,5 @@
                            (.append " dog"))
                      (.toString string))
                 "quick brown fox jumped over the lazy dog")))
+
+(run-tests)
