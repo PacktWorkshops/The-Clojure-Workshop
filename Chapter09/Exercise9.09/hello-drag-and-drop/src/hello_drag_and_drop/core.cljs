@@ -54,9 +54,8 @@
       (let [draggable-id (jayq/data (.-draggable ui) "number")]
            (println "Dropping element with id" draggable-id)
            (reset! is-element-dropped? true)
-           (.draggable (.-draggable ui) (attrs {:revert false}))   ;; will prevent dragging. dragged element stays in droppable box
-           (.draggable (.-draggable ui) "disable")   ;; will prevent dragging and add class ui-draggable-disabled. Dragged element stays in initial position
-           (.droppable ($ (str "#" (.-id (.-target event)))) "disable") ;; will prevent dropping more elements into this box
+           (.draggable (.-draggable ui) "disable")
+           (.droppable ($ (str "#" (.-id (.-target event)))) "disable")
            (.position (.-draggable ui)
                       (attrs {:of ($ (str "#" (.-id (.-target event)))) :my "left top" :at "left top"}))))
 
