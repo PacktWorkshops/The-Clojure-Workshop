@@ -1,19 +1,15 @@
-ata so that it doesn't get over-written on reload
+(ns packt-clj.reagent-sandbox.core
+    (:require [reagent.core :as reagent]))
 
-(defonce app-state (atom {:text "Hello world!"
-                          :button-on? true}))
+(enable-console-print!)
+
+(defonce app-state (atom {:text "Hello world!"}))
 
 (defn image-with-width [url width]
   [:img {:src url
          :style {:width width
                  :border "solid gray 3px"
                  :border-radius "10px"}}])
-
-(defn button []
-  (let [text (if (get-in @app-state [:button-on?]) "ON" "OFF")]
-    [:button
-     {:on-click #(swap! app-state update-in [:button-on?] not)}
-     text]))
 
 (def my-images
   ["https://picsum.photos/id/0/5616/3744"
@@ -39,11 +35,6 @@ ata so that it doesn't get over-written on reload
 
 (reagent/render-component [hello-world]
                           (. js/document (getElementById "app")))
-
-(defn fetch-images []
-  (-> (js/fetch "https://picsum.photos/v2/list?limit=10")
-      (.then (fn [response] (.json response)))
-      (.then (fn [json] (swap! app-state assoc-in [:images] (js->clj json :keywordize-keys true))))))
 
 (defn on-js-reload []
   ;; optionally touch your app-state to force rerendering depending on
