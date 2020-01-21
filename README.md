@@ -10,9 +10,8 @@ This is the repository for [The Clojure Workshop](https://courses.packtpub.com/c
 <a href="https://courses.packtpub.com/courses/php?utm_source=github&utm_medium=repository&utm_campaign=9781838648916&utm_term=PHP&utm_content=The%20PHP%20Workshop"><img src="https://github.com/PacktWorkshops/Workshop-Covers/blob/master/The%20PHP%20Workshop.jpg" alt="The PHP Workshop" height="340px" width="280px" align="right" this.target="_blank"></a>
 
 To get started with the project files, you'll need to:
-1. Install PHP on [Windows](https://windows.php.net/download/)
-2. MySQL Workbench on [Windows](https://dev.mysql.com/downloads/installer/)
-3. Installing Composer on [Ubuntu/Mac](https://getcomposer.org/download/), [Windows](https://getcomposer.org/Composer-Setup.exe)
+1. Install OpenJDK on [Windows](https://adoptopenjdk.net/releases.html)
+2. Install Clojure on [Windows/Mac/Linux](https://leiningen.org/)
 
 ## About The Clojure Workshop
 You already know you want to learn Clojure, and a smart way to learn Clojure is to learn by doing. The Clojure Workshop focuses on building up your practical skills so that you can write clean, expressive code with a language that is great for applications where concurrency and interoperability with the JVM are a priority. You'll learn from real examples that lead to real results. 
