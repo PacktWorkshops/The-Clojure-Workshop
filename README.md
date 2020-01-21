@@ -1,4 +1,4 @@
-# The PHP Workshop
+# The Clojure Workshop
 [![GitHub issues](https://img.shields.io/github/issues/PacktWorkshops/The-Clojure-Workshop.svg)](https://github.com/PacktWorkshops/The-Clojure-Workshop/issues)
 [![GitHub forks](https://img.shields.io/github/forks/PacktWorkshops/The-Clojure-Workshop.svg)](https://github.com/PacktWorkshops/The-Clojure-Workshop/network)
 [![GitHub stars](https://img.shields.io/github/stars/PacktWorkshops/The-Clojure-Workshop.svg)](https://github.com/PacktWorkshops/The-Clojure-Workshop/stargazers)
