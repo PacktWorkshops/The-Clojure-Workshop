@@ -15,7 +15,7 @@ To get started with the project files, you'll need to:
 3. Installing Composer on [Ubuntu/Mac](https://getcomposer.org/download/), [Windows](https://getcomposer.org/Composer-Setup.exe)
 
 ## About The Clojure Workshop
-You already know you want to learn Clojure, and a smarter way to learn Clojure is to learn by doing. The Clojure Workshop focuses on building up your practical skills so that you can write clean, expressive code with a language that is great for applications where concurrency and interoperability with the JVM are a priority. You'll learn from real examples that lead to real results. 
+You already know you want to learn Clojure, and a smart way to learn Clojure is to learn by doing. The Clojure Workshop focuses on building up your practical skills so that you can write clean, expressive code with a language that is great for applications where concurrency and interoperability with the JVM are a priority. You'll learn from real examples that lead to real results. 
 
 ## What you will learn
 * Learn about Clojure fundamentals like functional programming 
