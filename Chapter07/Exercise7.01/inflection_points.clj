@@ -1,5 +1,3 @@
-(ns packt-clj.inflection-points)
-
 ;;; In REPL: 1. Define some sample data
 (def sample-data
   [[24.2 420031]
@@ -26,31 +24,50 @@
   (and (> a b) (> c b)))
 
 (local-max? (take 3 sample-data))
-(local-min? (take 3 (drop 2 sample-data)))
+;; => false
 
+(local-min? (take 3 sample-data))
+;; => false
+
+(local-min? (take 3 (drop 2 sample-data)))
+;; => true
 
 ;;; In REPL
 (defn inflection-points [data]
   (lazy-seq
-    (let [current-series (take 3 data)]
-      
-      (cond (< (count current-series) 3)
-            '()
+   (let [current-series (take 3 data)]
+     (cond (< (count current-series) 3)
+           '()
+           (local-max? current-series)
+           (cons
+            (conj (second current-series) :peak)
+            (inflection-points (rest data)))
+           (local-min? current-series)
+           (cons
+            (conj (second current-series) :valley)
+            (inflection-points (rest data)))
+           :otherwise
+           (inflection-points (rest data))))))
 
-            (local-max? current-series)
-            (cons
-              (conj (second current-series) :peak)
-              (inflection-points (rest data)))
+(inflection-points sample-data)
+;; => ([25.9 589014 :peak]
+;;     [23.8 691995 :valley]
+;;     [24.7 734902 :peak]
+;;     [23.1 836204 :valley])
 
-            (local-min? current-series)
-            (cons
-              (conj (second current-series) :valley)
-              (inflection-points (rest data)))
-
-            :otherwise
-            (inflection-points (rest data))))))
-
-
-
-
-
+(take 15 (inflection-points (cycle sample-data)))
+;; => ([25.9 589014 :peak]
+;;     [23.8 691995 :valley]
+;;     [24.7 734902 :peak]
+;;     [23.1 836204 :valley]
+;;     [25.9 589014 :peak]
+;;     [23.8 691995 :valley]
+;;     [24.7 734902 :peak]
+;;     [23.1 836204 :valley]
+;;     [25.9 589014 :peak]
+;;     [23.8 691995 :valley]
+;;     [24.7 734902 :peak]
+;;     [23.1 836204 :valley]
+;;     [25.9 589014 :peak]
+;;     [23.8 691995 :valley]
+;;     [24.7 734902 :peak])
