@@ -4,7 +4,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/PacktWorkshops/The-Clojure-Workshop.svg)](https://github.com/PacktWorkshops/The-Clojure-Workshop/stargazers)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/PacktWorkshops/The-Clojure-Workshop/pulls)
 
-This is the repository for [The Clojure Workshop](https://courses.packtpub.com/courses/php?utm_source=github&utm_medium=repository&utm_campaign=9781838648916&utm_term=PHP&utm_content=The%20PHP%20Workshop), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the course from start to finish.
+This is the repository for [The Clojure Workshop](https://github.com/PacktWorkshops/Workshop-Covers/blob/master/The%20Clojure%20Workshop.png), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the course from start to finish.
 
 ## Requirements and Setup
 <a href="https://courses.packtpub.com/courses/php?utm_source=github&utm_medium=repository&utm_campaign=9781838648916&utm_term=PHP&utm_content=The%20PHP%20Workshop"><img src="https://github.com/PacktWorkshops/Workshop-Covers/blob/master/The%20PHP%20Workshop.jpg" alt="The PHP Workshop" height="340px" width="280px" align="right" this.target="_blank"></a>
