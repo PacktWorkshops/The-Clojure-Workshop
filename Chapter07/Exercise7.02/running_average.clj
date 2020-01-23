@@ -16,7 +16,22 @@
 (double (/ 551 3))
 ;; => 183.6666666666667
 
-;;; In REPL: 7. The complete function
+
+;;; In REPL: 7. The complete function (print version)
+(defn average-potatoes [prev arrivals]
+  (lazy-seq
+    (if-not arrivals
+      '()
+      (let [[_ n total] prev
+            current [(first arrivals)
+                     (inc (or n 0))
+                     (+ (first arrivals) (or total 0))]]
+        (cons current
+              (average-potatoes
+                current
+                (next arrivals)))))))
+
+;;; In REPL: 7. The complete function (video version)
 (defn average-potatoes [prev arrivals]
   (lazy-seq
    (when (seq arrivals)
