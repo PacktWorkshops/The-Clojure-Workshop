@@ -45,3 +45,4 @@
       (when flight1 (print-mapjet-flight flight1))
       (when flight2 (print-mapjet-flight flight2))
       (when flight3 (print-mapjet-flight flight3)))))
+    (print-mapjet-booking mapjet-booking)
