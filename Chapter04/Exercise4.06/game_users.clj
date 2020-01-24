@@ -62,3 +62,8 @@
     :experience-level 8
     :status :active}])
 
+;;; In REPL
+(map (fn [player] (:current-points player)) game-users)
+
+;;; In REPL
+(map :current-points game-usersplayers)
