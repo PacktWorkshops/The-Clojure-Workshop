@@ -8,3 +8,5 @@
 
 ;;; In REPL
 (def by-ten (map (fn [i] (print ".") (* i 10)) (our-range 5)))
+;;; In REPL
+by-ten
