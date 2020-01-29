@@ -6,3 +6,8 @@
                {:name "Pippa" :year 2002}
                {:name "Fleur" :year 2002}])
 
+;;; In REPL
+(take-while #(< (:year %) 2000) students)
+
+;;; In REPL
+(drop-while #(< (:year %) 2000) students)
