@@ -7,7 +7,7 @@
 This is the repository for The Clojure Workshop, published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the course from start to finish.
 
 ## Requirements and Setup
-<a href="https://www.packtpub.com/programming/the-clojure-workshop utm_source=github&utm_medium=repository&utm_campaign=9781838648916&utm_term=PHP&utm_content=The%20PHP%20Workshop"><img src="https://github.com/PacktWorkshops/Workshop-Covers/blob/master/The%20Clojure%20Workshop.png" alt="The Clojure Workshop" height="340px" width="280px" align="right" this.target="_blank"></a>
+<a href="https://www.packtpub.com/programming/the-clojure-workshop"><img src="https://github.com/PacktWorkshops/Workshop-Covers/blob/master/The%20Clojure%20Workshop.png" alt="The Clojure Workshop" height="340px" width="280px" align="right" this.target="_blank"></a>
 
 To get started with the project files, you'll need to:
 1. Install OpenJDK on [Windows](https://adoptopenjdk.net/releases.html)
