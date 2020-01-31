@@ -55,6 +55,7 @@
            (println "Dropping element with id" draggable-id)
            (reset! is-element-dropped? true)
            (.draggable (.-draggable ui) "disable")
+           (.draggable (.-draggable ui) (attrs {:revert false}))
            (.droppable ($ (str "#" (.-id (.-target event)))) "disable")
            (.position (.-draggable ui)
                       (attrs {:of ($ (str "#" (.-id (.-target event)))) :my "left top" :at "left top"}))))
