@@ -5,6 +5,7 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [semantic-csv "0.2.1-alpha1"]
-                 [org.clojure/data.csv "0.1.4"]]
+                 [org.clojure/data.csv "0.1.4"]
+                 [org.clojure/math.numeric-tower "0.0.4"]]
   :repl-options {:init-ns packt-clj.chapter-5-tests}
   :profiles {:dev {:resource-paths ["test/resources"]}})
