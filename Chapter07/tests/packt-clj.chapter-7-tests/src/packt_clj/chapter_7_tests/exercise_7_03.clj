@@ -5,6 +5,7 @@
    [clojure.math.numeric-tower :as math]
    [semantic-csv.core :as sc]))
 
+
 ;;; The first part of this file comes from the tennis_history.clj
 ;;; from Exercise 5.03.
 (defn match-probability [player-1-rating player-2-rating]
