@@ -56,11 +56,12 @@
 
 (map #(select-keys % [:winner_rating :loser_rating])
      (take 5 matches))
-;; => ({:winner_rating 383.7874179641862, :loser_rating 377.0535568919501}
-;;     {:winner_rating 385.81556045669777, :loser_rating 400}
-;;     {:winner_rating 425.28519415220205, :loser_rating 392.4642655522188}
-;;     {:winner_rating 399.6031143722425, :loser_rating 339.0133003437099}
-;;     {:winner_rating 394.6292801031314, :loser_rating 400})
+;; ({:winner_rating 985.2418497337458, :loser_rating 927.9839328429639}
+;;  {:winner_rating 1265.3903009991964, :loser_rating 875.8644912132612}
+;;  {:winner_rating 1012.6267015729657, :loser_rating 969.5966741618663}
+;;  {:winner_rating 1311.801159776237, :loser_rating 1002.1872608853402}
+;;  {:winner_rating 853.6200747439426, :loser_rating 950.2283493122825})
+
 
 ;;; The new functions start here
 
