@@ -11,7 +11,7 @@
 
 (defn ->closed-tag [tagname attrs]
   (if attrs
-    (str "<" tagname " " (attributes attrs) ">")
+    (str "<" tagname " " (attributes attrs) "/>")
     (str "<" tagname "/>")))
 
 (defn ->opening-tag [tagname attrs]
