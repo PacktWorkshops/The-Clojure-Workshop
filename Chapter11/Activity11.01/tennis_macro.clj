@@ -1,7 +1,7 @@
 (ns packt-clj.tennis-macro
-    (:require [clojure.java.io :as io]
-              [clojure.data.csv :as csv]
-              [semantic-csv.core :as sc]))
+  (:require [clojure.java.io :as io]
+            [clojure.data.csv :as csv]
+            [semantic-csv.core :as sc]))
 
 (comment
   ;; The target code
@@ -27,7 +27,7 @@
 
 
 
-
+ 
 (defn maybe-select-keys [m maybe-keys]
   (if (seq maybe-keys)
     (select-keys m maybe-keys)
