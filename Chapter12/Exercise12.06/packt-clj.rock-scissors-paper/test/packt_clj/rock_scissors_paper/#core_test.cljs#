@@ -1,0 +1,27 @@
+(ns packt-clj.rock-scissors-paper.core-test
+  (:require [packt-clj.rock-scissors-paper.core :as rock]
+            [cljs.test :refer-macros [deftest is testing run-tests]]))
+
+(deftest computer-choice
+  (let [choices (take 5 (repeatedly rock/computer-choice))]
+    (is (every? #{:rock :scissors :paper} choices))))
+
+(deftest result-messages-from-sets
+  (is (= "Rock crushes scissors." (rock/result-messages :rock :scissors)))
+  (is (= "Rock crushes scissors." (rock/result-messages :scissors :rock)))
+  (is (= "Paper wraps rock." (rock/result-messages :rock :paper))))
+
+(deftest resolve-game
+  (is (= :tie (rock/resolve-game :rock :rock)))
+  (is (= :player-wins (rock/resolve-game :rock :scissors)))
+  (is (= :computer-wins (rock/resolve-game :scissors :rock))))
+
+
+(deftest app-state
+  (is (instance? cljs.core/Atom rock/app-state))
+  (is (thrown? js/Error
+               (swap! rock/app-state #(assoc % :countdown 99))))
+  (swap! rock/app-state #))
+
+(run-tests)
+

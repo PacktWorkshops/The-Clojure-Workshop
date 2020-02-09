@@ -1,10 +1,12 @@
 # packt-clj.rock-scissors-paper
 
-FIXME: Write a one-line description of your library/project.
+A simple Clojurescript implementation of the famous Rock, Scissors, Paper game.
 
 ## Overview
 
-FIXME: Write a paragraph about the library/project and highlight its goals.
+Take the world by storm with this flash, text-based, interactive game!
+
+This version builds on Exercise 12.05 by adding atom validation and a watcher.
 
 ## Setup
 
@@ -32,8 +34,16 @@ To create a production build run:
 And open your browser in `resources/public/index.html`. You will not
 get live reloading, nor a REPL. 
 
-## License
+## Testing
 
-Copyright © 2014 FIXME
+In your Clojurescript REPL, you can run the tests by loading the `core_test.cljs` file:
 
-Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
+```
+dev:cljs.user=> (load-file "test/packt_clj/rock_scissors_paper/core_test.cljs")
+
+Testing packt-clj.rock-scissors-paper.core-test
+                
+Ran 3 tests containing 7 assertions.
+0 failures, 0 errors.
+dev:cljs.user=> 
+```
