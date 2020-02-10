@@ -19,7 +19,7 @@
 
   :cljsbuild {:builds
               [{:id "dev"
-                :source-paths ["src"]
+                :source-paths ["src" "test"]
 
                 ;; The presence of a :figwheel configuration here
                 ;; will cause figwheel to inject the figwheel client
@@ -44,8 +44,8 @@
                ;; lein cljsbuild once min
                {:id "min"
                 :source-paths ["src"]
-                :compiler {:output-to "resources/public/js/compiled/dom_whackamole.js"
-                           :main dom-whackamole.core
+                :compiler {:output-to "resources/public/js/compiled/packt_clj/dom_whackamole.js"
+                           :main packt-clj.dom-whackamole.core
                            :optimizations :advanced
                            :pretty-print false}}]}
 
@@ -56,7 +56,7 @@
              :css-dirs ["resources/public/css"] ;; watch and update CSS
 
              ;; Start an nREPL server into the running figwheel process
-;;             :nrepl-port 7888
+             :nrepl-port 7888
 
              ;; Server Ring Handler (optional)
              ;; if you want to embed a ring handler into the figwheel http-kit
@@ -91,9 +91,9 @@
   :profiles {:dev {:dependencies [[binaryage/devtools "0.9.10"]
                                   [cider/piggieback "0.4.2"]
                                   [figwheel-sidecar "0.5.19"]]
-                   :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
+;;                   :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
                    ;; need to add dev source path here to get user.clj loaded
-                   :source-paths ["src" "dev"]
+                   :source-paths ["src" "test" "dev"]
                    ;; need to add the compiled assets to the :clean-targets
-                   :clean-targets ^{:protect false} ["resources/public/js/compiled"
+                   :clean-targets ^{:protect false} ["resources/public/js/compiled/packt_cljs"
                                                      :target-path]}})
