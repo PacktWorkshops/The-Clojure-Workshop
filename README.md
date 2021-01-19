@@ -7,7 +7,7 @@
 This is the repository for [The Clojure Workshop](https://www.amazon.com/Clojure-Workshop-Interactive-Approach-Learning-dp-1838825487/dp/1838825487/ref=mt_other?_encoding=UTF8&me=&qid=1610976962&utm_source=github&utm_medium=repository&utm_campaign=9781838825485&utm_term=Clojure&utm_content=The%20Clojure%20Workshop), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the course from start to finish.
 
 ## Requirements and Setup
-<a href="https://www.amazon.com/Clojure-Workshop-Interactive-Approach-Learning-dp-1838825487/dp/1838825487/ref=mt_other?_encoding=UTF8&me=&qid=1610976962&utm_source=github&utm_medium=repository&utm_campaign=9781838825485&utm_term=Clojure&utm_content=The%20Clojure%20Workshop"><img src="https://github.com/PacktWorkshops/Workshop-Covers/blob/master/The%20Clojure%20Workshop.png" alt="The Clojure Workshop" height="300px" width="260px" align="right" this.target="_blank"></a>
+<a href="https://www.amazon.com/Clojure-Workshop-Interactive-Approach-Learning-dp-1838825487/dp/1838825487/ref=mt_other?_encoding=UTF8&me=&qid=1610976962&utm_source=github&utm_medium=repository&utm_campaign=9781838825485&utm_term=Clojure&utm_content=The%20Clojure%20Workshop"><img src="https://github.com/PacktWorkshops/Workshop-Covers/blob/master/The%20Clojure%20Workshop.png" alt="The Clojure Workshop" height="290px" width="240px" align="right" this.target="_blank"></a>
 
 To get started with the project files, you'll need to:
 1. Install OpenJDK on [Windows](https://adoptopenjdk.net/releases.html)
