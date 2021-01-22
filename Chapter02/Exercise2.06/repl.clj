@@ -69,7 +69,7 @@
 ;; 11
 (defn change-color
   [db gemstone new-color]
-  (assoc-in gemstone-db [gemstone :properties :color] new-color))
+  (assoc-in db [gemstone :properties :color] new-color))
 
 ;; 12
 (change-color gemstone-db :ruby "Some kind of red")
