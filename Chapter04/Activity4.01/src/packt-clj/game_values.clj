@@ -1,6 +1,5 @@
 (ns packt-clj.game-values)
 
-
 (def game-users
   [{:id 9342
     :username "speedy"
@@ -63,22 +62,19 @@
     :experience-level 8
     :status :active}])
 
-
 (defn max-value-by-status [field status users]
-               (->> 
-                 users
-                  ;; step 1: use filter to only keep users who
-                  ;; have the status we are looking for 
-                 (filter #(= (:status %) status))
-                 ;; step 2: field is a keyword, so we can use it as 
-                 ;; a function when calling map.
-                 (map field)
-                 ;; step 3: use the apply max pattern, with a default
-                 (apply max 0)))
+  (->> users
+       ;; step 1: use filter to only keep users who
+       ;; have the status we are looking for
+       (filter #(= (:status %) status))
+       ;; step 2: field is a keyword, so we can use it as
+       ;; a function when calling map.
+       (map field)
+       ;; step 3: use the apply max pattern, with a default
+       (apply max 0)))
 
 (defn min-value-by-status [field status users]
-               (->> 
-                 users
-                 (filter #(= (:status %) status))
-                 (map field)
-                 (apply min 0)))
+  (->> users
+       (filter #(= (:status %) status))
+       (map field)
+       (apply min))) ;; do not use a default, (min '()) returns nil

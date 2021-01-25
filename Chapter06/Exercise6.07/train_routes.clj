@@ -55,7 +55,7 @@
       (= position destination) path
 
       (get-in route-lookup [position destination])
-      (conj path destination)
+      [(conj path destination)]
 
       :otherwise-we-search
       (let [path-set (set path)
