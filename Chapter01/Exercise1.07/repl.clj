@@ -11,7 +11,7 @@
 (= false nil)
 (= "hello" "hello" (clojure.string/reverse "olleh"))
 (= [1 2 3] [1 2 3])
-(= ‘(1 2 3) [1 2 3])
+(= '(1 2 3) [1 2 3])
 (= 1)
 (= "I will not reason and compare: my business is to create.")
 
@@ -47,7 +47,7 @@
 ; }
 ;;  Javascript code example 2:
 ; let x = 50;
-; console.log(x >= 0 && x <= 100 || x % 100 == 0 ? "Valid" : “Invalid");
+; console.log(x >= 0 && x <= 100 || x % 100 == 0 ? "Valid" : "Invalid");
 
 (let [x 50]
   (if (or (<= 1 x 100) (= 0 (mod x 100)))
