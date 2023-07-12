@@ -77,4 +77,4 @@
   (->> users
        (filter #(= (:status %) status))
        (map field)
-       (apply min))) ;; do not use a default, (min '()) returns nil
+       (apply min)))
